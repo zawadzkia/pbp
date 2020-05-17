@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  pbp_db:
+    container_name: pbp_db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'pbp'
+      MYSQL_USER: 'pbp'
+      MYSQL_PASSWORD: 'pbp'
+      MYSQL_ROOT_PASSWORD: 'pbp'
+    ports:
+      - '3336:3306'
+    volumes:
+      - pbp_db:/var/lib/mysql
+
+volumes:
+  pbp_db:
