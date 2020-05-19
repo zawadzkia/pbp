@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
+<head>
+    <title>PBP</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div th:if="${error != null}" class="row">
+        <div class="container"><h2 class="alert-danger" th:text="${error}"></h2></div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <form th:action="@{/registration}" th:object="${userMT}" method="POST" class="form-signin">
+                <h3 class="form-signin-heading" th:text="Registration"></h3>
+                <br/>
+
+                <input type="text" id="username" name="username" placeholder="User Name"
+                       class="form-control" th:value="${userMT.getUsername() != null ? userMT.getUsername() : ''}"/> <br/>
+                <input type="password" th:placeholder="Password"
+                       id="password" name="password" class="form-control"/> <br/>
+                <input type="text" id="email" name="email" placeholder="email"
+                       class="form-control" th:value="${userMT.getEmail() != null ? userMT.getEmail() : ''}"/> <br/>
+
+                <button class="btn btn-lg btn-primary btn-blrock" name="Submit" value="Submit" type="Submit" th:text="Submit"></button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
